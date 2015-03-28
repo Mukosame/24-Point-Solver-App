@@ -26,28 +26,32 @@
             <TextBox TextWrapping="Wrap"  Width="280" Margin="19,0,0,19" HorizontalAlignment="Left" AcceptsReturn="True" 
                      SelectionHighlightColor="Red" TextChanged="t1changed" SelectionChanged="s1changed" Paste="p1paste"
                      Name="textbox1" InputScope="Number"
-                     Text="第一个数字"/>
+                     Text=""/>
 
             <TextBox TextWrapping="Wrap"  Width="280" Margin="19,0,0,19" HorizontalAlignment="Left" AcceptsReturn="True" 
                      SelectionHighlightColor="Red" TextChanged="t2changed" SelectionChanged="s2changed" Paste="p2paste"
                      Name="textbox2" InputScope="Number"
-                     Text="第二个数字"/>
+                     Text=""/>
 
             <TextBox TextWrapping="Wrap"  Width="280" Margin="19,0,0,19" HorizontalAlignment="Left" AcceptsReturn="True" 
                      SelectionHighlightColor="Red" TextChanged="t3changed" SelectionChanged="s3changed" Paste="p3paste"
                      Name="textbox3" InputScope="Number"
-                     Text="第三个数字"/>
+                     Text=""/>
 
             <TextBox TextWrapping="Wrap"  Width="280" Margin="19,0,0,19" HorizontalAlignment="Left" AcceptsReturn="True" 
                      SelectionHighlightColor="Red" TextChanged="t4changed" SelectionChanged="s4changed" Paste="p4paste"
                      Name="textbox4" InputScope="Number"
-                     Text="第四个数字"/>
+                     Text=""/>
 
-            <Button  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="75"
-                    Content="好了，开始计算" Click="ok"/>
-            <TextBlock TextWrapping="Wrap" FontSize="20" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="19,0,0,19"
-                       Text="结果为" Name="output"/>
-
+        </StackPanel>
+        
+        <StackPanel Orientation="Horizontal" Margin="19,385,19,180">
+        <Button Content="好了，开始计算" Click="ok"/>
+            <Button Content="清空，重新输入" Click="clc"/>
+        </StackPanel>
+        <StackPanel Margin="19,460,19,75">
+        <TextBlock TextWrapping="Wrap" FontSize="20" HorizontalAlignment="Stretch"
+                       Text="" Name="output"/>
         </StackPanel>
         <StackPanel Margin="0,0,0,0"  HorizontalAlignment="Center" VerticalAlignment="Bottom" Orientation="Horizontal">
 

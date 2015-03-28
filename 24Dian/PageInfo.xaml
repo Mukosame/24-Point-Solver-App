@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="_24Dian.Info"
+    x:Class="_24Dian.PageInfo"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:_24Dian"
@@ -8,7 +8,7 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+    <Grid x:Name="LayoutRoot">
 
         <Grid.ChildrenTransitions>
             <TransitionCollection>
@@ -23,13 +23,13 @@
 
         <!-- Title Panel -->
         <StackPanel Grid.Row="0" Margin="19,0,0,0">
-            <TextBlock Text="24点求解器 V1.1.0.1" Style="{ThemeResource TitleTextBlockStyle}"  Name="Version"/>
+            <TextBlock Text="24点求解器 V1.0.0.0" Style="{ThemeResource TitleTextBlockStyle}"  Name="Version"/>
             <TextBlock Text="关于"   Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
         </StackPanel>
 
         <!--TODO: Content should be placed within the following grid-->
-        <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
-            <TextBlock HorizontalAlignment="Left"  TextWrapping="Wrap" VerticalAlignment="Top"
+            <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
+                <TextBlock HorizontalAlignment="Left"  TextWrapping="Wrap" VerticalAlignment="Top"
                        FontSize="17">
                        使用帮助：
                 <LineBreak/>
@@ -38,21 +38,21 @@
                 <LineBreak/>按下“好了，开始计算”，则计算结果可显示在按钮下方； 
                 <LineBreak/>按下“清空，重新输入”，则可清空掉输入的所有数字，以及之前的计算结果。
 
-            </TextBlock>
-        </Grid>
-        <Grid Grid.Row="2" x:Name="HelpRoot" Margin="19,265,19,0">
-            <TextBlock HorizontalAlignment="Left"  TextWrapping="Wrap" VerticalAlignment="Top"
+                </TextBlock>
+            </Grid>
+            <Grid Grid.Row="2" x:Name="HelpRoot" Margin="19,265,19,0">
+                <TextBlock HorizontalAlignment="Left"  TextWrapping="Wrap" VerticalAlignment="Top"
                        FontSize="17">
                 开发者：
                 <LineBreak/>Mukosame
                 <LineBreak/>如果你喜欢我的应用，可以：
                 <LineBreak/>
-            </TextBlock>
-        </Grid>
-        <Grid Grid.Row="2" x:Name="BottomButton" Margin="19,350,19,0">
-            <Button Content="给我发邮件" HorizontalAlignment="Center" VerticalAlignment="Top" Width="250" Click="email"/>
-            <Button Content="看看我的其他应用" HorizontalAlignment="Center"  Width="250" Click="otherapp"/>
+                </TextBlock>
+            </Grid>
+            <Grid Grid.Row="2" x:Name="BottomButton" Margin="19,350,19,0">
+                <Button Content="给我发邮件" HorizontalAlignment="Center" VerticalAlignment="Top" Width="250" Click="email"/>
+                <Button Content="看看我的其他应用" HorizontalAlignment="Center"  Width="250" Click="otherapp"/>
 
+            </Grid>
         </Grid>
-    </Grid>
 </Page>

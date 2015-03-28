@@ -27,11 +27,11 @@ namespace _24Dian
         //int treat(float a, float b, float c, float d);
         //float myF(int flag, float m, float n);
         //void myPrint(int type, int i, int j, int k, float a, float b, float c, float d);
-        int num1, num2, num3, num4;
+        int num1=0, num2=0, num3=0, num4=0;
         int i=0, j=0, k=0, t=0;
         int res;
         int temp=0;
-        int flag;
+        //int flag;
         //new float num[4];
         float[] num = new float[] { 0, 0, 0, 0 };
         String SelectedText;
@@ -58,6 +58,7 @@ namespace _24Dian
             // If you are using the NavigationHelper provided by some templates,
             // this event is handled for you.
         }
+
         //judge if is int 1~13
         /*
         protected bool isNumeric(string message)
@@ -74,109 +75,93 @@ namespace _24Dian
                 return false;
         }
          * */
-
+         
         //get number
         //text changed
         //1
         private void t1changed(object sender,TextChangedEventArgs e)
         {
-            int result = -1;
             bool done=false;
             String message = textbox1.Text;
-            System.Text.RegularExpressions.Regex rex =
-        new System.Text.RegularExpressions.Regex(@"^\d+$");            
-            if (rex.IsMatch(message))
-            {
-                result = int.Parse(message);
-                if ((result > 0) && (result < 14))
-                { done = true; }
-            }
+            if (message == "")
+            { check1.Text = "ℹ"; }
             else
-                done = false;
+                        {
+            dealNum mNum = new dealNum();
+            done = mNum.IsNumeric(message);
             //judgement finished
             if (done==true)
             {
-                num1 = result;
+                num1 = mNum.result;
                 check1.Text = "✔";
             }
             else
-            { check1.Text = "⛔"; }
+            { check1.Text = "⛔"; num1 = 0; }
+        }
         }
         //2
         private void t2changed(object sender, TextChangedEventArgs e)
         {
-            int result = -1;
             bool done = false;
             String message = textbox2.Text;
-            System.Text.RegularExpressions.Regex rex =
-        new System.Text.RegularExpressions.Regex(@"^\d+$");
-            if (rex.IsMatch(message))
-            {
-                result = int.Parse(message);
-                if ((result > 0) && (result < 14))
-                { done = true; }
-            }
+            if (message == "")
+            { check2.Text = "ℹ"; }
             else
-                done = false;
-            //judgement finished
-            if (done == true)
             {
-                num2 = result;
-                check2.Text = "✔";
+                dealNum mNum = new dealNum();
+                done = mNum.IsNumeric(message);
+                //judgement finished
+                if (done == true)
+                {
+                    num2 = mNum.result;
+                    check2.Text = "✔";
+                }
+                else
+                { check2.Text = "⛔"; num2 = 0; }
             }
-            else
-            { check2.Text = "⛔"; }
         }
         //3
         private void t3changed(object sender, TextChangedEventArgs e)
-        {
-            int result = -1;
+        {           
             bool done = false;
             String message = textbox3.Text;
-            System.Text.RegularExpressions.Regex rex =
-        new System.Text.RegularExpressions.Regex(@"^\d+$");
-            if (rex.IsMatch(message))
-            {
-                result = int.Parse(message);
-                if ((result > 0) && (result < 14))
-                { done = true; }
-            }
+            if (message == "")
+            { check3.Text = "ℹ"; }
             else
-                done = false;
-            //judgement finished
-            if (done == true)
             {
-                num3 = result;
-                check3.Text = "✔";
+                dealNum mNum = new dealNum();
+                done = mNum.IsNumeric(message);
+                //judgement finished
+                if (done == true)
+                {
+                    num3 = mNum.result;
+                    check3.Text = "✔";
+                }
+                else
+                { check3.Text = "⛔"; num3 = 0; }
             }
-            else
-            { check3.Text = "⛔"; }
         }
 
                 //4
         private void t4changed(object sender, TextChangedEventArgs e)
         {
-            int result = -1;
             bool done = false;
             String message = textbox4.Text;
-            System.Text.RegularExpressions.Regex rex =
-        new System.Text.RegularExpressions.Regex(@"^\d+$");
-            if (rex.IsMatch(message))
-            {
-                result = int.Parse(message);
-                if ((result > 0) && (result < 14))
-                { done = true; }
-            }
+            if (message == "")
+            { check4.Text = "ℹ"; }
             else
-                done = false;
-            //judgement finished
-            if (done == true)
             {
-                num4 = result;
-                check4.Text = "✔";
+                dealNum mNum = new dealNum();
+                done = mNum.IsNumeric(message);
+                //judgement finished
+                if (done == true)
+                {
+                    num4 = mNum.result;
+                    check4.Text = "✔";
+                }
+                else
+                { check4.Text = "⛔"; num4 = 0; }
             }
-            else
-            { check4.Text = "⛔"; }
         }
 
         //Text Selected
@@ -209,109 +194,98 @@ namespace _24Dian
         private void p1paste(object sender, TextControlPasteEventArgs e)
         {
             SelectedText = textbox1.SelectedText;
-            int result = -1;
+           
             bool done = false;
             String message = textbox1.Text;
-            System.Text.RegularExpressions.Regex rex =
-        new System.Text.RegularExpressions.Regex(@"^\d+$");
-            if (rex.IsMatch(message))
-            {
-                result = int.Parse(message);
-                if ((result > 0) && (result < 14))
-                { done = true; }
-            }
+            if (message == "")
+            { check1.Text = "ℹ"; }
             else
-                done = false;
-            //judgement finished
-            if (done == true)
             {
-                num1 = result;
-                check1.Text = "✔";
+                dealNum mNum = new dealNum();
+                done = mNum.IsNumeric(message);
+                //judgement finished
+                if (done == true)
+                {
+                    num1 = mNum.result;
+                    check1.Text = "✔";
+                }
+                else
+                { check1.Text = "⛔"; num1 = 0; }
             }
-            else
-            { check1.Text = "⛔"; }
         }
 
         //2
         private void p2paste(object sender, TextControlPasteEventArgs e)
         {
             SelectedText = textbox2.SelectedText;
-            int result = -1;
+            
             bool done = false;
             String message = textbox2.Text;
-            System.Text.RegularExpressions.Regex rex =
-        new System.Text.RegularExpressions.Regex(@"^\d+$");
-            if (rex.IsMatch(message))
-            {
-                result = int.Parse(message);
-                if ((result > 0) && (result < 14))
-                { done = true; }
-            }
+            if (message == "")
+            { check2.Text = "ℹ"; }
             else
-                done = false;
-            //judgement finished
-            if (done == true)
             {
-                num2 = result;
-                check2.Text = "✔";
+                dealNum mNum = new dealNum();
+                done = mNum.IsNumeric(message);
+                //judgement finished
+                if (done == true)
+                {
+                    num2 = mNum.result;
+                    check2.Text = "✔";
+                }
+                else
+                { check2.Text = "⛔"; num2 = 0; }
             }
-            else
-            { check2.Text = "⛔"; }
         }
 
         //3
         private void p3paste(object sender, TextControlPasteEventArgs e)
         {
             SelectedText = textbox3.SelectedText;
-            int result = -1;
+             
             bool done = false;
             String message = textbox3.Text;
-            System.Text.RegularExpressions.Regex rex =
-        new System.Text.RegularExpressions.Regex(@"^\d+$");
-            if (rex.IsMatch(message))
-            {
-                result = int.Parse(message);
-                if ((result > 0) && (result < 14))
-                { done = true; }
-            }
+            if (message == "")
+            { check3.Text = "ℹ"; }
             else
-                done = false;
-            //judgement finished
-            if (done == true)
             {
-                num3 = result;
-                check3.Text = "✔";
+                dealNum mNum = new dealNum();
+                done = mNum.IsNumeric(message);
+                //judgement finished
+                if (done == true)
+                {
+                    num3 = mNum.result;
+                    check3.Text = "✔";
+                }
+                else
+                { check3.Text = "⛔"; num3 = 0; }
             }
-            else
-            { check3.Text = "⛔"; }
         }
 
         //4
         private void p4paste(object sender, TextControlPasteEventArgs e)
         {
             SelectedText = textbox4.SelectedText;
-            int result = -1;
+             
             bool done = false;
             String message = textbox4.Text;
-            System.Text.RegularExpressions.Regex rex =
-        new System.Text.RegularExpressions.Regex(@"^\d+$");
-            if (rex.IsMatch(message))
-            {
-                result = int.Parse(message);
-                if ((result > 0) && (result < 14))
-                { done = true; }
-            }
+            if (message == "")
+            { check4.Text = "ℹ"; }
             else
-                done = false;
-            //judgement finished
-            if (done == true)
             {
-                num4 = result;
-                check4.Text = "✔";
+                dealNum mNum = new dealNum();
+                done = mNum.IsNumeric(message);
+                //judgement finished
+                if (done == true)
+                {
+                    num3 = mNum.result;
+                    check4.Text = "✔";
+                }
+                else
+                { check4.Text = "⛔"; num4 = 0; }
             }
-            else
-            { check4.Text = "⛔"; }
         }
+
         //Begin to calculate
         private void ok(object sender, RoutedEventArgs e)
         {
@@ -319,10 +293,10 @@ namespace _24Dian
             if (y != 0)
             {
                 //float = int
-                num[1] = num1;
-                num[2] = num2;
-                num[3] = num3;
-                num[4] = num4;
+                num[0] = num1;
+                num[1] = num2;
+                num[2] = num3;
+                num[3] = num4;
                 calculate();
             }
             else
@@ -343,7 +317,7 @@ namespace _24Dian
 								}
 	if (res==0)
 		output.Text = "抱歉，无解";
-	else ;
+	//else ;
         }
 
         int treat(float a, float b, float c, float d)
@@ -431,37 +405,47 @@ namespace _24Dian
             return 0;
         }
 
-        void myPrint(int type,int i,int j,int k,float a,float b,float c,float d)
+        void myPrint(int type,int i,int j,int k,float aa,float bb,float cc,float dd)
 {
             char[] sigle = new char[6];
-	//char sigle[6];
 		sigle[0]='+';
 		sigle[1]='-';
 		sigle[2]='*';
 		sigle[3]='/';
 		sigle[4]='-';
 		sigle[5]='/';
+            int at = (int) aa; String a=at.ToString();
+            int bt = (int) bb; String b=bt.ToString();
+            int ct = (int) cc; String c=ct.ToString();
+            int dt = (int) dd; String d=dt.ToString(); 
+
 	if (type==1){
-		if(j==4 || j==5)
-		{
-			if (k==4 || k==5)
-				output.Text= ("%2.0f %c (%2.0f %c (%2.0f %c %2.0f)) =24\n",d,sigle[k],c,sigle[j],a,sigle[i],b);
-			else
-				printf("(%2.0f %c (%2.0f %c %2.0f)) %c %2.0f =24\n",c,sigle[j],a,sigle[i],b,sigle[k],d);
-		}
-		else if (k==4 || k==5)
-		{
-			printf("%2.0f %c ((%2.0f %c %2.0f) %c %2.0f) =24\n",d,sigle[k],a,sigle[i],b,sigle[j],c);
-		}
-		else
-			printf("((%2.0f %c %2.0f) %c %2.0f) %c %2.0f =24\n",a,sigle[i],b,sigle[j],c,sigle[k],d);
+        if (j == 4 || j == 5)
+        {
+            if (k == 4 || k == 5)
+                //还没换行
+                output.Text = d + sigle[k] + "(" + c + sigle[j] + "(" + a + sigle[i] + b + "))=24";
+            //"%2.0f %c (%2.0f %c (%2.0f %c %2.0f)) =24\n",d,sigle[k],c,sigle[j],a,sigle[i],b;
+            else
+                output.Text = "(" + c + sigle[j] + "(" + a + sigle[i] + b + "))" + sigle[k] + d + "=24";
+            //"(%2.0f %c (%2.0f %c %2.0f)) %c %2.0f =24\n", c,sigle[j],a,sigle[i],b,sigle[k],d;
+        }
+        else if (k == 4 || k == 5)
+        {
+            output.Text = d + sigle[k] + "((" + a + sigle[i] + b + ")" + sigle[j] + c + ")=24";
+            //"%2.0f %c ((%2.0f %c %2.0f) %c %2.0f) =24\n",d,sigle[k],a,sigle[i],b,sigle[j],c;
+        }
+        else
+            output.Text = "((" + a + sigle[i] + b + ")" + sigle[j] + c + ")" + sigle[k] + d + "=24";
+			//"((%2.0f %c %2.0f) %c %2.0f) %c %2.0f =24\n",a,sigle[i],b,sigle[j],c,sigle[k],d;
 	}
 	if (type==2 || type==3)
 	{
 	//	if (k==4 || k==5)
 	//		printf("(%2.0f %c %2.0f) %c (%2.0f %c %2.0f)=24\n",c,sigle[j],d,sigle[k],a,sigle[i],b);
 	//	else
-			printf("(%2.0f %c %2.0f) %c (%2.0f %c %2.0f) =24\n",a,sigle[i],b,sigle[k],c,sigle[j],d);
+        output.Text = "(" + a + sigle[i] + b + ")" + sigle[k] + "(" + c + sigle[j] + d + ")" + "=24";
+        			//"(%2.0f %c %2.0f) %c (%2.0f %c %2.0f) =24\n",a,sigle[i],b,sigle[k],c,sigle[j],d;
 	}
 }					
 
@@ -469,9 +453,19 @@ namespace _24Dian
         private void HelpButton_Click(object sender, RoutedEventArgs e)
         {
             //this.NavigationService.Navigate(new Uri("/Info_Page.xaml", UriKind.Relative));
-            Frame.Navigate(typeof(Info));
+            Frame.Navigate(typeof(PageInfo));
         }
 
+        //clear all
+        private void clc(object sender, RoutedEventArgs e)
+        {
+            output.Text = "";
+            textbox1.Text = "";
+            textbox2.Text = "";
+            textbox3.Text = "";
+            textbox4.Text = "";
+            //num1 = num2 = num3 = num4 = i = j = k = t = 0;
+        }
 
         //
         //IF YOU WANT Add something here

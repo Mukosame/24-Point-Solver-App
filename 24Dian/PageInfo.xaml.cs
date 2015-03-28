@@ -18,19 +18,19 @@ using Windows.UI.Xaml.Navigation;
 using Windows.ApplicationModel.Email;
 using Windows.Security.ExchangeActiveSyncProvisioning;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
+// The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
 namespace _24Dian
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class Info : Page
+    public sealed partial class PageInfo : Page
     {
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
 
-        public Info()
+        public PageInfo()
         {
             this.InitializeComponent();
 
@@ -38,21 +38,10 @@ namespace _24Dian
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
         }
-        /*
-                private void HardwareButtons_BackPressed(object sender, BackPressedEventArgs e)
-                {
-                    Frame rootFrame = Window.Current.Content as Frame;
-                    if (rootFrame != null && rootFrame.CanGoBack)
-                    {
-                        rootFrame.GoBack();
-                        e.Handled = true;
-                    }
-                }
-                */
+
         /// <summary>
         /// Gets the <see cref="NavigationHelper"/> associated with this <see cref="Page"/>.
         /// </summary>
-        /// 
         public NavigationHelper NavigationHelper
         {
             get { return this.navigationHelper; }
@@ -96,15 +85,28 @@ namespace _24Dian
 
         #region NavigationHelper registration
 
+        /// <summary>
+        /// The methods provided in this section are simply used to allow
+        /// NavigationHelper to respond to the page's navigation methods.
+        /// <para>
+        /// Page specific logic should be placed in event handlers for the  
+        /// <see cref="NavigationHelper.LoadState"/>
+        /// and <see cref="NavigationHelper.SaveState"/>.
+        /// The navigation parameter is available in the LoadState method 
+        /// in addition to page state preserved during an earlier session.
+        /// </para>
+        /// </summary>
+        /// <param name="e">Provides data for navigation methods and event
+        /// handlers that cannot cancel the navigation request.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            this.navigationHelper.OnNavigatedTo(e);
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
             this.navigationHelper.OnNavigatedFrom(e);
         }
-
         async void email(object sender, RoutedEventArgs e)
         {
 
@@ -133,7 +135,7 @@ namespace _24Dian
             var uri = new Uri(string.Format(@"ms-windows-store:search?publisher=Mukosame"));
             await Windows.System.Launcher.LaunchUriAsync(uri);
         }
-        #endregion
 
+        #endregion
     }
 }
