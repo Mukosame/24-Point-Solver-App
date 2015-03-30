@@ -27,6 +27,7 @@ namespace _24Dian
     /// </summary>
     public sealed partial class PageInfo : Page
     {
+
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
 
@@ -37,6 +38,7 @@ namespace _24Dian
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
+            
         }
 
         /// <summary>
@@ -101,12 +103,14 @@ namespace _24Dian
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             this.navigationHelper.OnNavigatedTo(e);
+            Version.Text = "24点求解器"+e.Parameter.ToString();
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
             this.navigationHelper.OnNavigatedFrom(e);
         }
+
         async void email(object sender, RoutedEventArgs e)
         {
 
@@ -132,8 +136,10 @@ namespace _24Dian
 
         private async void otherapp(object sender, RoutedEventArgs e)
         {
-            var uri = new Uri(string.Format(@"ms-windows-store:search?publisher=Mukosame"));
-            await Windows.System.Launcher.LaunchUriAsync(uri);
+            //var uri = new Uri(string.Format(@"ms-windows-store:search?publisher=Mukosame"));
+            //await Windows.System.Launcher.LaunchUriAsync(uri);
+            await Windows.System.Launcher.LaunchUriAsync(
+                new Uri(string.Format("ms-windows-store:search?keyword=Mukosame")));
         }
 
         #endregion

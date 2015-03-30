@@ -12,7 +12,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-
+using System.Reflection;
+using Windows.ApplicationModel;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=391641
 
@@ -23,6 +24,7 @@ namespace _24Dian
     /// </summary>
     public sealed partial class MainPage : Page
     {
+
         //Here are the functions used in calculation
         //int treat(float a, float b, float c, float d);
         //float myF(int flag, float m, float n);
@@ -35,6 +37,7 @@ namespace _24Dian
         //new float num[4];
         float[] num = new float[] { 0, 0, 0, 0 };
         String SelectedText;
+        String appversion = GetAppVersion();
 
         public MainPage()
         {
@@ -51,7 +54,7 @@ namespace _24Dian
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             // TODO: Prepare page for display here.
-
+            Version.Text = appversion;
             // TODO: If your application contains multiple pages, ensure that you are
             // handling the hardware Back button by registering for the
             // Windows.Phone.UI.Input.HardwareButtons.BackPressed event.
@@ -75,6 +78,14 @@ namespace _24Dian
                 return false;
         }
          * */
+        public static string GetAppVersion()
+        {
+            Package package = Package.Current;
+            PackageId packageId = package.Id;
+            PackageVersion version = packageId.Version;
+            string temp= String.Format("{0}.{0}.{0}.{0}版",version.Major, version.Minor, version.Build, version.Revision);
+            return temp;
+        }
          
         //get number
         //text changed
@@ -410,10 +421,10 @@ namespace _24Dian
             char[] sigle = new char[6];
 		sigle[0]='+';
 		sigle[1]='-';
-		sigle[2]='*';
-		sigle[3]='/';
+        sigle[2] = '×';
+        sigle[3] = '÷';
 		sigle[4]='-';
-		sigle[5]='/';
+        sigle[5] = '÷';
             int at = (int) aa; String a=at.ToString();
             int bt = (int) bb; String b=bt.ToString();
             int ct = (int) cc; String c=ct.ToString();
@@ -424,19 +435,19 @@ namespace _24Dian
         {
             if (k == 4 || k == 5)
                 //还没换行
-                output.Text = d + sigle[k] + "(" + c + sigle[j] + "(" + a + sigle[i] + b + "))=24";
+                output.Text += d + sigle[k] + "(" + c + sigle[j] + "(" + a + sigle[i] + b + "))=24 \n";
             //"%2.0f %c (%2.0f %c (%2.0f %c %2.0f)) =24\n",d,sigle[k],c,sigle[j],a,sigle[i],b;
             else
-                output.Text = "(" + c + sigle[j] + "(" + a + sigle[i] + b + "))" + sigle[k] + d + "=24";
+                output.Text += "(" + c + sigle[j] + "(" + a + sigle[i] + b + "))" + sigle[k] + d + "=24 \n";
             //"(%2.0f %c (%2.0f %c %2.0f)) %c %2.0f =24\n", c,sigle[j],a,sigle[i],b,sigle[k],d;
         }
         else if (k == 4 || k == 5)
         {
-            output.Text = d + sigle[k] + "((" + a + sigle[i] + b + ")" + sigle[j] + c + ")=24";
+            output.Text += d + sigle[k] + "((" + a + sigle[i] + b + ")" + sigle[j] + c + ")=24 \n";
             //"%2.0f %c ((%2.0f %c %2.0f) %c %2.0f) =24\n",d,sigle[k],a,sigle[i],b,sigle[j],c;
         }
         else
-            output.Text = "((" + a + sigle[i] + b + ")" + sigle[j] + c + ")" + sigle[k] + d + "=24";
+            output.Text += "((" + a + sigle[i] + b + ")" + sigle[j] + c + ")" + sigle[k] + d + "=24 \n";
 			//"((%2.0f %c %2.0f) %c %2.0f) %c %2.0f =24\n",a,sigle[i],b,sigle[j],c,sigle[k],d;
 	}
 	if (type==2 || type==3)
@@ -444,7 +455,7 @@ namespace _24Dian
 	//	if (k==4 || k==5)
 	//		printf("(%2.0f %c %2.0f) %c (%2.0f %c %2.0f)=24\n",c,sigle[j],d,sigle[k],a,sigle[i],b);
 	//	else
-        output.Text = "(" + a + sigle[i] + b + ")" + sigle[k] + "(" + c + sigle[j] + d + ")" + "=24";
+        output.Text += "(" + a + sigle[i] + b + ")" + sigle[k] + "(" + c + sigle[j] + d + ")" + "=24 \n";
         			//"(%2.0f %c %2.0f) %c (%2.0f %c %2.0f) =24\n",a,sigle[i],b,sigle[k],c,sigle[j],d;
 	}
 }					
@@ -453,7 +464,13 @@ namespace _24Dian
         private void HelpButton_Click(object sender, RoutedEventArgs e)
         {
             //this.NavigationService.Navigate(new Uri("/Info_Page.xaml", UriKind.Relative));
-            Frame.Navigate(typeof(PageInfo));
+            Frame.Navigate(typeof(PageInfo),appversion);
+        }
+
+        private async void LikeButton_Click(object sender, RoutedEventArgs e)
+        {
+            await Windows.System.Launcher.LaunchUriAsync(
+    new Uri(string.Format("ms-windows-store:reviewapp?appid=" + "fb408308-0028-4940-acd5-68afa1652d1f")));
         }
 
         //clear all
@@ -472,3 +489,4 @@ namespace _24Dian
         //
     }
 }
+
