@@ -54,7 +54,7 @@ namespace _24Dian
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             // TODO: Prepare page for display here.
-            Version.Text = appversion;
+            //Version.Text = appversion;
             // TODO: If your application contains multiple pages, ensure that you are
             // handling the hardware Back button by registering for the
             // Windows.Phone.UI.Input.HardwareButtons.BackPressed event.
@@ -86,7 +86,7 @@ namespace _24Dian
             string temp= String.Format("{0}.{0}.{0}.{0}版",version.Major, version.Minor, version.Build, version.Revision);
             return temp;
         }
-         
+
         //get number
         //text changed
         //1
@@ -94,63 +94,48 @@ namespace _24Dian
         {
             bool done=false;
             String message = textbox1.Text;
-            if (message == "")
-            { check1.Text = "ℹ"; }
-            else
-                        {
+
             dealNum mNum = new dealNum();
             done = mNum.IsNumeric(message);
             //judgement finished
-            if (done==true)
+            if (done == true)
             {
                 num1 = mNum.result;
-                check1.Text = "✔";
+                //check1.Text = "✔";
             }
-            else
-            { check1.Text = "⛔"; num1 = 0; }
-        }
+        
         }
         //2
         private void t2changed(object sender, TextChangedEventArgs e)
         {
             bool done = false;
             String message = textbox2.Text;
-            if (message == "")
-            { check2.Text = "ℹ"; }
-            else
-            {
+
                 dealNum mNum = new dealNum();
                 done = mNum.IsNumeric(message);
                 //judgement finished
                 if (done == true)
                 {
                     num2 = mNum.result;
-                    check2.Text = "✔";
+                    //check2.Text = "✔";
                 }
-                else
-                { check2.Text = "⛔"; num2 = 0; }
-            }
+            
         }
         //3
         private void t3changed(object sender, TextChangedEventArgs e)
         {           
             bool done = false;
             String message = textbox3.Text;
-            if (message == "")
-            { check3.Text = "ℹ"; }
-            else
-            {
+
                 dealNum mNum = new dealNum();
                 done = mNum.IsNumeric(message);
                 //judgement finished
                 if (done == true)
                 {
                     num3 = mNum.result;
-                    check3.Text = "✔";
+                   // check3.Text = "✔";
                 }
-                else
-                { check3.Text = "⛔"; num3 = 0; }
-            }
+            
         }
 
                 //4
@@ -158,21 +143,16 @@ namespace _24Dian
         {
             bool done = false;
             String message = textbox4.Text;
-            if (message == "")
-            { check4.Text = "ℹ"; }
-            else
-            {
+
                 dealNum mNum = new dealNum();
                 done = mNum.IsNumeric(message);
                 //judgement finished
                 if (done == true)
                 {
                     num4 = mNum.result;
-                    check4.Text = "✔";
+                   // check4.Text = "✔";
                 }
-                else
-                { check4.Text = "⛔"; num4 = 0; }
-            }
+            
         }
 
         //Text Selected
@@ -208,21 +188,16 @@ namespace _24Dian
            
             bool done = false;
             String message = textbox1.Text;
-            if (message == "")
-            { check1.Text = "ℹ"; }
-            else
-            {
+
                 dealNum mNum = new dealNum();
                 done = mNum.IsNumeric(message);
                 //judgement finished
                 if (done == true)
                 {
                     num1 = mNum.result;
-                    check1.Text = "✔";
+                    //check1.Text = "✔";
                 }
-                else
-                { check1.Text = "⛔"; num1 = 0; }
-            }
+            
         }
 
         //2
@@ -232,21 +207,16 @@ namespace _24Dian
             
             bool done = false;
             String message = textbox2.Text;
-            if (message == "")
-            { check2.Text = "ℹ"; }
-            else
-            {
+
                 dealNum mNum = new dealNum();
                 done = mNum.IsNumeric(message);
                 //judgement finished
                 if (done == true)
                 {
                     num2 = mNum.result;
-                    check2.Text = "✔";
+                    //check2.Text = "✔";
                 }
-                else
-                { check2.Text = "⛔"; num2 = 0; }
-            }
+            
         }
 
         //3
@@ -256,21 +226,16 @@ namespace _24Dian
              
             bool done = false;
             String message = textbox3.Text;
-            if (message == "")
-            { check3.Text = "ℹ"; }
-            else
-            {
+
                 dealNum mNum = new dealNum();
                 done = mNum.IsNumeric(message);
                 //judgement finished
                 if (done == true)
                 {
                     num3 = mNum.result;
-                    check3.Text = "✔";
+                    //check3.Text = "✔";
                 }
-                else
-                { check3.Text = "⛔"; num3 = 0; }
-            }
+            
         }
 
         //4
@@ -280,21 +245,16 @@ namespace _24Dian
              
             bool done = false;
             String message = textbox4.Text;
-            if (message == "")
-            { check4.Text = "ℹ"; }
-            else
-            {
+            
                 dealNum mNum = new dealNum();
                 done = mNum.IsNumeric(message);
                 //judgement finished
                 if (done == true)
                 {
                     num3 = mNum.result;
-                    check4.Text = "✔";
+                   // check4.Text = "✔";
                 }
-                else
-                { check4.Text = "⛔"; num4 = 0; }
-            }
+            
         }
 
         //Begin to calculate

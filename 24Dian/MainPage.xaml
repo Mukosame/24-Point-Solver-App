@@ -6,67 +6,96 @@
     xmlns:local="using:_24Dian"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    mc:Ignorable="d" Foreground="Transparent" Background="#FF3C5059">
 
     <Grid>
         <!-- Title Panel -->
-        <StackPanel Grid.Row="0" Margin="19,0,0,0">
-            <TextBlock Style="{ThemeResource TitleTextBlockStyle}"  Name="Version"/>
-            <TextBlock Text="24点求解器"   Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
+        <StackPanel Grid.Row="0" Margin="0,1,0,0">
+            <TextBlock Text="24Solver" FontSize="48"  CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}" FontFamily="Agency FB" TextAlignment="Center" RenderTransformOrigin="0.5,0.5" Foreground="#FFE8E9">
+                <TextBlock.RenderTransform>
+                    <CompositeTransform ScaleX="1.4"/>
+                </TextBlock.RenderTransform>
+            </TextBlock>
         </StackPanel>
-        <StackPanel Grid.Column="0" Margin="320,162,0,0" Orientation="Vertical">
-            <TextBlock TextWrapping="Wrap" Text="ℹ"  Name="check1" FontSize="35" Height="60"/>
-            <TextBlock TextWrapping="Wrap" Text="ℹ"  Name="check2" FontSize="35" Height="60"/>
-            <TextBlock TextWrapping="Wrap" Text="ℹ"  Name="check3" FontSize="35" Height="60"/>
-            <TextBlock TextWrapping="Wrap" Text="ℹ"  Name="check4" FontSize="35" Height="60"/>
-        </StackPanel>
-        <StackPanel Margin="0,120,80,0">
-            <TextBlock TextWrapping="Wrap" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="19,0,0,19"
-                       Text="请输入4个数字(1~13)"/>
-            <TextBox TextWrapping="Wrap"  Width="280" Margin="19,0,0,19" HorizontalAlignment="Left" AcceptsReturn="True" 
-                     SelectionHighlightColor="Red" TextChanged="t1changed" SelectionChanged="s1changed" Paste="p1paste"
-                     Name="textbox1" InputScope="Number"
-                     Text=""/>
 
-            <TextBox TextWrapping="Wrap"  Width="280" Margin="19,0,0,19" HorizontalAlignment="Left" AcceptsReturn="True" 
-                     SelectionHighlightColor="Red" TextChanged="t2changed" SelectionChanged="s2changed" Paste="p2paste"
-                     Name="textbox2" InputScope="Number"
-                     Text=""/>
+        <Grid Margin="65,60,50,420">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBox Grid.Column="0" Grid.Row="0" TextWrapping="Wrap"  Width="100" HorizontalAlignment="Center" AcceptsReturn="True" 
+            	SelectionHighlightColor="Red" TextChanged="t2changed" SelectionChanged="s2changed" Paste="p2paste"
+            	x:Name="textbox1" InputScope="Number" FontSize="40"
+            	Height="66" BorderThickness="0" BorderBrush="#FF3C5059">
+                <TextBox.Background>
+                    <ImageBrush Stretch="Uniform" ImageSource="num.png"/>
+                </TextBox.Background>
+            </TextBox>
+            <TextBox Grid.Column="1" Grid.Row="0" TextWrapping="Wrap"  Width="100" HorizontalAlignment="Center" AcceptsReturn="True" 
+            	SelectionHighlightColor="Red" TextChanged="t2changed" SelectionChanged="s2changed" Paste="p2paste"
+            	x:Name="textbox2" InputScope="Number" FontSize="40"
+            	Height="66" BorderThickness="0" BorderBrush="#FF3C5059">
+            	<TextBox.Background>
+            		<ImageBrush Stretch="Uniform" ImageSource="num.png"/>
+            	</TextBox.Background>
+            </TextBox>
 
-            <TextBox TextWrapping="Wrap"  Width="280" Margin="19,0,0,19" HorizontalAlignment="Left" AcceptsReturn="True" 
-                     SelectionHighlightColor="Red" TextChanged="t3changed" SelectionChanged="s3changed" Paste="p3paste"
-                     Name="textbox3" InputScope="Number"
-                     Text=""/>
+            <TextBox Grid.Column="0" Grid.Row="1" TextWrapping="Wrap"  Width="100" Height="66" HorizontalAlignment="Center" AcceptsReturn="True" 
+                     VerticalAlignment="Bottom" SelectionHighlightColor="Red" TextChanged="t3changed" SelectionChanged="s3changed" Paste="p3paste"
+                     x:Name="textbox3" InputScope="Number" BorderThickness="0" BorderBrush="#FF3C5059" FontSize="40">
+            	<TextBox.Background>
+            		<ImageBrush Stretch="Uniform" ImageSource="num.png"/>
+            	</TextBox.Background>
+            </TextBox>
 
-            <TextBox TextWrapping="Wrap"  Width="280" Margin="19,0,0,19" HorizontalAlignment="Left" AcceptsReturn="True" 
-                     SelectionHighlightColor="Red" TextChanged="t4changed" SelectionChanged="s4changed" Paste="p4paste"
-                     Name="textbox4" InputScope="Number"
-                     Text=""/>
+            <TextBox Grid.Column="1" Grid.Row="1" TextWrapping="Wrap"  Width="100" Height="66" HorizontalAlignment="Center" AcceptsReturn="True" 
+                     VerticalAlignment="Bottom" SelectionHighlightColor="Red" TextChanged="t4changed" SelectionChanged="s4changed" Paste="p4paste"
+                     x:Name="textbox4" InputScope="Number" FontSize="40"
+                     BorderThickness="0" BorderBrush="#FF3C5059">
+            	<TextBox.Background>
+            		<ImageBrush Stretch="Uniform" ImageSource="num.png"/>
+            	</TextBox.Background>
+            </TextBox>
 
-        </StackPanel>
-        
-        <StackPanel Orientation="Horizontal" Margin="19,385,19,180">
-        <Button Content="好了，开始计算" Click="ok"/>
-            <Button Content="清空，重新输入" Click="clc"/>
-        </StackPanel>
-        
-        <StackPanel Margin="19,460,19,75">
-            <ScrollViewer Name="scrollviewer" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="110" Margin="0,0,0,0" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Visible">
-                <ScrollViewer.Content>        
-                <TextBlock TextWrapping="Wrap" FontSize="20" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                       Text="" Name="output"/>
+        </Grid>
+
+        <Grid Margin="96,230,50,365">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Content="" Height="70" Click="clc" Grid.Column="0" BorderThickness="0" HorizontalAlignment="Left">
+                <Button.Background>
+                    <ImageBrush Stretch="None" ImageSource="red.png"/>
+                </Button.Background>
+            </Button>
+            <Button Content="" Height="70" Click="ok" Grid.Column="1" BorderThickness="0" HorizontalAlignment="Right">
+            	<Button.Background>
+            		<ImageBrush Stretch="None" ImageSource="green.png"/>
+            	</Button.Background>
+            </Button>
+        </Grid>
+
+        <StackPanel Margin="88,305,74,95">
+        	<StackPanel.Background>
+        		<ImageBrush Stretch="Uniform" ImageSource="scroll.png"/>
+        	</StackPanel.Background>
+            <ScrollViewer Name="scrollviewer" VerticalAlignment="Center" HorizontalAlignment="Stretch" Height="232" Margin="0,0,0.333,0" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Visible" BorderBrush="#FFD8DCDE">
+                <ScrollViewer.Content>
+                    <TextBlock TextWrapping="Wrap" FontSize="26"
+                       Text="" Name="output" Width="220" Height="220" Foreground="#FF0D1925">
+                    </TextBlock>
                 </ScrollViewer.Content>
             </ScrollViewer>
         </StackPanel>
-        
+
         <StackPanel Margin="0,0,0,0"  HorizontalAlignment="Center" VerticalAlignment="Bottom" Orientation="Horizontal">
-
-            <AppBarButton Icon="Like" Label="喜欢" Click="LikeButton_Click" />
-            <AppBarButton  Icon="Help" Label="帮助" Click="HelpButton_Click"/>
-
-
+            <AppBarButton Label="" Click="LikeButton_Click" VerticalAlignment="Bottom" Background="Black" Icon="Like" />
+            <AppBarButton Label="" Click="HelpButton_Click" VerticalAlignment="Bottom" Icon="Help" Foreground="White"/>
         </StackPanel>
-
     </Grid>
 </Page>
