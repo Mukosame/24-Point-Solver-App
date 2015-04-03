@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using System.Reflection;
 using Windows.ApplicationModel;
+using Windows.UI.Xaml.Media.Imaging;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=391641
 
@@ -94,14 +95,18 @@ namespace _24Dian
         {
             bool done=false;
             String message = textbox1.Text;
-
-            dealNum mNum = new dealNum();
-            done = mNum.IsNumeric(message);
-            //judgement finished
-            if (done == true)
+            if (message != "")
             {
-                num1 = mNum.result;
-                //check1.Text = "✔";
+                dealNum mNum = new dealNum();
+                done = mNum.IsNumeric(message);
+                //judgement finished
+                if (done == true)
+                {
+                    num1 = mNum.result;
+                    //check1.Text = "✔";
+                }
+                else
+                { num1 = 0; }
             }
         
         }
@@ -110,7 +115,8 @@ namespace _24Dian
         {
             bool done = false;
             String message = textbox2.Text;
-
+            if (message != "")
+            {
                 dealNum mNum = new dealNum();
                 done = mNum.IsNumeric(message);
                 //judgement finished
@@ -119,6 +125,9 @@ namespace _24Dian
                     num2 = mNum.result;
                     //check2.Text = "✔";
                 }
+                else
+                { num2 = 0; }
+            }
             
         }
         //3
@@ -126,16 +135,19 @@ namespace _24Dian
         {           
             bool done = false;
             String message = textbox3.Text;
-
+            if (message != "")
+            {
                 dealNum mNum = new dealNum();
                 done = mNum.IsNumeric(message);
                 //judgement finished
                 if (done == true)
                 {
                     num3 = mNum.result;
-                   // check3.Text = "✔";
+                    // check3.Text = "✔";
                 }
-            
+                else
+                { num3 = 0; }
+            }
         }
 
                 //4
@@ -143,15 +155,19 @@ namespace _24Dian
         {
             bool done = false;
             String message = textbox4.Text;
-
+            if (message != "")
+            {
                 dealNum mNum = new dealNum();
                 done = mNum.IsNumeric(message);
                 //judgement finished
                 if (done == true)
                 {
                     num4 = mNum.result;
-                   // check4.Text = "✔";
+                    // check4.Text = "✔";
                 }
+            }
+            else
+            { num4 = 0; }
             
         }
 
@@ -188,7 +204,8 @@ namespace _24Dian
            
             bool done = false;
             String message = textbox1.Text;
-
+            if (message != "")
+            {
                 dealNum mNum = new dealNum();
                 done = mNum.IsNumeric(message);
                 //judgement finished
@@ -197,6 +214,9 @@ namespace _24Dian
                     num1 = mNum.result;
                     //check1.Text = "✔";
                 }
+                else
+                { num1 = 0; }
+            }
             
         }
 
@@ -207,7 +227,8 @@ namespace _24Dian
             
             bool done = false;
             String message = textbox2.Text;
-
+            if (message != "")
+            {
                 dealNum mNum = new dealNum();
                 done = mNum.IsNumeric(message);
                 //judgement finished
@@ -216,6 +237,9 @@ namespace _24Dian
                     num2 = mNum.result;
                     //check2.Text = "✔";
                 }
+                else
+                { num2 = 0; }
+            }
             
         }
 
@@ -226,7 +250,8 @@ namespace _24Dian
              
             bool done = false;
             String message = textbox3.Text;
-
+            if (message != "")
+            {
                 dealNum mNum = new dealNum();
                 done = mNum.IsNumeric(message);
                 //judgement finished
@@ -235,7 +260,9 @@ namespace _24Dian
                     num3 = mNum.result;
                     //check3.Text = "✔";
                 }
-            
+                else
+                { num3 = 0; }
+            }
         }
 
         //4
@@ -245,21 +272,25 @@ namespace _24Dian
              
             bool done = false;
             String message = textbox4.Text;
-            
+            if (message != "")
+            {
                 dealNum mNum = new dealNum();
                 done = mNum.IsNumeric(message);
                 //judgement finished
                 if (done == true)
                 {
                     num3 = mNum.result;
-                   // check4.Text = "✔";
+                    // check4.Text = "✔";
                 }
-            
+                else
+                { num4 = 0; }
+            }
         }
 
         //Begin to calculate
         private void ok(object sender, RoutedEventArgs e)
         {
+            output.Text = "";
             int y = num1 * num2 * num3 * num4;
             if (y != 0)
             {
@@ -271,7 +302,7 @@ namespace _24Dian
                 calculate();
             }
             else
-                output.Text = "输入数值有误，请按照提示重新输入";
+                output.Text = "输入数值有误，\n请重新输入";
         }
 
         private void calculate()
@@ -443,6 +474,7 @@ namespace _24Dian
             textbox4.Text = "";
             //num1 = num2 = num3 = num4 = i = j = k = t = 0;
         }
+
 
         //
         //IF YOU WANT Add something here
