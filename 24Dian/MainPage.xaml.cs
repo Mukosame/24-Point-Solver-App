@@ -319,7 +319,7 @@ namespace _24Dian
 								}
 	if (res==0)
 		output.Text = "抱歉，无解";
-	//else ;
+	else result.Text="=24" ;
         }
 
         int treat(float a, float b, float c, float d)
@@ -335,7 +335,7 @@ namespace _24Dian
                             sum1 = myF(i, a, b);
                             sum2 = myF(j, sum1, c);
                             sum3 = myF(k, sum2, d);
-                            if (Math.Abs(sum3 - 24) < 0.1)
+                            if (Math.Abs(sum3 - 24) < 1e-8)
                             {
                                 temp++;
                                 myPrint(1, i, j, k, a, b, c, d);
@@ -349,7 +349,7 @@ namespace _24Dian
                             sum1 = myF(i, a, b);
                             sum2 = myF(j, c, d);
                             sum3 = sum1 * sum2;
-                            if (Math.Abs(sum3 - 24) < 0.1)
+                            if (Math.Abs(sum3 - 24) < 1e-8)
                             {
                                 temp++;
                                 myPrint(2, i, j, k, a, b, c, d);
@@ -366,7 +366,7 @@ namespace _24Dian
                             if (sum2 != 0)
                             {
                                 sum3 = sum1 / sum2;
-                                if (Math.Abs(sum3 - 24) < 0.1)
+                                if (Math.Abs(sum3 - 24) < 1e-8)
                                 {
                                     temp++;
                                     myPrint(3, i, j, k, a, b, c, d);
@@ -426,19 +426,19 @@ namespace _24Dian
         {
             if (k == 4 || k == 5)
                 //还没换行
-                output.Text += d + sigle[k] + "(" + c + sigle[j] + "(" + a + sigle[i] + b + "))=24 \n";
+                output.Text += d + sigle[k] + "(" + c + sigle[j] + "(" + a + sigle[i] + b + "))\n";
             //"%2.0f %c (%2.0f %c (%2.0f %c %2.0f)) =24\n",d,sigle[k],c,sigle[j],a,sigle[i],b;
             else
-                output.Text += "(" + c + sigle[j] + "(" + a + sigle[i] + b + "))" + sigle[k] + d + "=24 \n";
+                output.Text += "(" + c + sigle[j] + "(" + a + sigle[i] + b + "))" + sigle[k] + d + "\n";
             //"(%2.0f %c (%2.0f %c %2.0f)) %c %2.0f =24\n", c,sigle[j],a,sigle[i],b,sigle[k],d;
         }
         else if (k == 4 || k == 5)
         {
-            output.Text += d + sigle[k] + "((" + a + sigle[i] + b + ")" + sigle[j] + c + ")=24 \n";
+            output.Text += d + sigle[k] + "((" + a + sigle[i] + b + ")" + sigle[j] + c + ")\n";
             //"%2.0f %c ((%2.0f %c %2.0f) %c %2.0f) =24\n",d,sigle[k],a,sigle[i],b,sigle[j],c;
         }
         else
-            output.Text += "((" + a + sigle[i] + b + ")" + sigle[j] + c + ")" + sigle[k] + d + "=24 \n";
+            output.Text += "((" + a + sigle[i] + b + ")" + sigle[j] + c + ")" + sigle[k] + d + "\n";
 			//"((%2.0f %c %2.0f) %c %2.0f) %c %2.0f =24\n",a,sigle[i],b,sigle[j],c,sigle[k],d;
 	}
 	if (type==2 || type==3)
@@ -446,7 +446,7 @@ namespace _24Dian
 	//	if (k==4 || k==5)
 	//		printf("(%2.0f %c %2.0f) %c (%2.0f %c %2.0f)=24\n",c,sigle[j],d,sigle[k],a,sigle[i],b);
 	//	else
-        output.Text += "(" + a + sigle[i] + b + ")" + sigle[k] + "(" + c + sigle[j] + d + ")" + "=24 \n";
+        output.Text += "(" + a + sigle[i] + b + ")" + sigle[k] + "(" + c + sigle[j] + d + ")" + "\n";
         			//"(%2.0f %c %2.0f) %c (%2.0f %c %2.0f) =24\n",a,sigle[i],b,sigle[k],c,sigle[j],d;
 	}
 }					
@@ -472,6 +472,7 @@ namespace _24Dian
             textbox2.Text = "";
             textbox3.Text = "";
             textbox4.Text = "";
+            result.Text = "";
             //num1 = num2 = num3 = num4 = i = j = k = t = 0;
         }
 
