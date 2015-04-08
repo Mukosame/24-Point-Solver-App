@@ -461,7 +461,7 @@ namespace _24Dian
         private async void LikeButton_Click(object sender, RoutedEventArgs e)
         {
             await Windows.System.Launcher.LaunchUriAsync(
-    new Uri(string.Format("ms-windows-store:reviewapp?appid=" + "fb408308-0028-4940-acd5-68afa1652d1f")));
+    new Uri(string.Format("ms-windows-store:reviewapp?appid=" + "1fa519bd-8db6-41fa-8e9c-90f138fe8c8b")));
         }
 
         //clear all

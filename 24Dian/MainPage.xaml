@@ -32,7 +32,7 @@
             </TextBlock>
         </StackPanel>
 
-        <Grid Margin="65,60,50,420">
+        <Grid Margin="65,60,50,400">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
@@ -47,7 +47,7 @@
             <Image Grid.Column="1" Grid.Row="1" Source="num.png" Stretch="None"/>
         </Grid>
 
-        <Grid Margin="65,60,50,420">
+        <Grid Margin="65,60,50,400">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
@@ -79,12 +79,12 @@
             </TextBox>
         </Grid>
 
-        <Grid Margin="120,230,60,365">
+        <Grid Margin="120,230,60,315">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button MinWidth="80" Content="" Height="70" Click="clc" Grid.Column="0" BorderThickness="0" HorizontalAlignment="Left">
+            <Button MinWidth="80" Content="" Height="70" Click="clc" Grid.Column="0" BorderThickness="0" HorizontalAlignment="Left" VerticalAlignment="Top">
                 <Button.Resources>
                     <Thickness x:Key="PhoneBorderThickness">2.5</Thickness>
                     <FontFamily x:Key="PhoneFontFamilyNormal">Segoe WP</FontFamily>
@@ -180,7 +180,7 @@
                 </Button.Background>
             </Button>
             <Button Content="" Height="70" Click="ok" Grid.Column="1" 
-                    MinWidth="80" BorderThickness="0" HorizontalAlignment="Right">
+                    MinWidth="80" BorderThickness="0" HorizontalAlignment="Right" VerticalAlignment="Top">
                 <Button.Resources>
                     <Thickness x:Key="PhoneBorderThickness">2.5</Thickness>
                     <FontFamily x:Key="PhoneFontFamilyNormal">Segoe WP</FontFamily>
