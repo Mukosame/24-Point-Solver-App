@@ -12,7 +12,9 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-
+using System.Reflection;
+using Windows.ApplicationModel;
+using Windows.UI.Xaml.Media.Imaging;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=391641
 
@@ -23,6 +25,7 @@ namespace _24Dian
     /// </summary>
     public sealed partial class MainPage : Page
     {
+
         //Here are the functions used in calculation
         //int treat(float a, float b, float c, float d);
         //float myF(int flag, float m, float n);
@@ -35,6 +38,7 @@ namespace _24Dian
         //new float num[4];
         float[] num = new float[] { 0, 0, 0, 0 };
         String SelectedText;
+        String appversion = GetAppVersion();
 
         public MainPage()
         {
@@ -51,7 +55,7 @@ namespace _24Dian
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             // TODO: Prepare page for display here.
-
+            //Version.Text = appversion;
             // TODO: If your application contains multiple pages, ensure that you are
             // handling the hardware Back button by registering for the
             // Windows.Phone.UI.Input.HardwareButtons.BackPressed event.
@@ -75,7 +79,15 @@ namespace _24Dian
                 return false;
         }
          * */
-         
+        public static string GetAppVersion()
+        {
+            Package package = Package.Current;
+            PackageId packageId = package.Id;
+            PackageVersion version = packageId.Version;
+            string temp= String.Format("{0}.{0}.{0}.{0}版",version.Major, version.Minor, version.Build, version.Revision);
+            return temp;
+        }
+
         //get number
         //text changed
         //1
@@ -83,30 +95,27 @@ namespace _24Dian
         {
             bool done=false;
             String message = textbox1.Text;
-            if (message == "")
-            { check1.Text = "ℹ"; }
-            else
-                        {
-            dealNum mNum = new dealNum();
-            done = mNum.IsNumeric(message);
-            //judgement finished
-            if (done==true)
+            if (message != "")
             {
-                num1 = mNum.result;
-                check1.Text = "✔";
+                dealNum mNum = new dealNum();
+                done = mNum.IsNumeric(message);
+                //judgement finished
+                if (done == true)
+                {
+                    num1 = mNum.result;
+                    //check1.Text = "✔";
+                }
+                else
+                { num1 = 0; }
             }
-            else
-            { check1.Text = "⛔"; num1 = 0; }
-        }
+        
         }
         //2
         private void t2changed(object sender, TextChangedEventArgs e)
         {
             bool done = false;
             String message = textbox2.Text;
-            if (message == "")
-            { check2.Text = "ℹ"; }
-            else
+            if (message != "")
             {
                 dealNum mNum = new dealNum();
                 done = mNum.IsNumeric(message);
@@ -114,20 +123,19 @@ namespace _24Dian
                 if (done == true)
                 {
                     num2 = mNum.result;
-                    check2.Text = "✔";
+                    //check2.Text = "✔";
                 }
                 else
-                { check2.Text = "⛔"; num2 = 0; }
+                { num2 = 0; }
             }
+            
         }
         //3
         private void t3changed(object sender, TextChangedEventArgs e)
         {           
             bool done = false;
             String message = textbox3.Text;
-            if (message == "")
-            { check3.Text = "ℹ"; }
-            else
+            if (message != "")
             {
                 dealNum mNum = new dealNum();
                 done = mNum.IsNumeric(message);
@@ -135,10 +143,10 @@ namespace _24Dian
                 if (done == true)
                 {
                     num3 = mNum.result;
-                    check3.Text = "✔";
+                    // check3.Text = "✔";
                 }
                 else
-                { check3.Text = "⛔"; num3 = 0; }
+                { num3 = 0; }
             }
         }
 
@@ -147,9 +155,7 @@ namespace _24Dian
         {
             bool done = false;
             String message = textbox4.Text;
-            if (message == "")
-            { check4.Text = "ℹ"; }
-            else
+            if (message != "")
             {
                 dealNum mNum = new dealNum();
                 done = mNum.IsNumeric(message);
@@ -157,11 +163,12 @@ namespace _24Dian
                 if (done == true)
                 {
                     num4 = mNum.result;
-                    check4.Text = "✔";
+                    // check4.Text = "✔";
                 }
-                else
-                { check4.Text = "⛔"; num4 = 0; }
             }
+            else
+            { num4 = 0; }
+            
         }
 
         //Text Selected
@@ -197,9 +204,7 @@ namespace _24Dian
            
             bool done = false;
             String message = textbox1.Text;
-            if (message == "")
-            { check1.Text = "ℹ"; }
-            else
+            if (message != "")
             {
                 dealNum mNum = new dealNum();
                 done = mNum.IsNumeric(message);
@@ -207,11 +212,12 @@ namespace _24Dian
                 if (done == true)
                 {
                     num1 = mNum.result;
-                    check1.Text = "✔";
+                    //check1.Text = "✔";
                 }
                 else
-                { check1.Text = "⛔"; num1 = 0; }
+                { num1 = 0; }
             }
+            
         }
 
         //2
@@ -221,9 +227,7 @@ namespace _24Dian
             
             bool done = false;
             String message = textbox2.Text;
-            if (message == "")
-            { check2.Text = "ℹ"; }
-            else
+            if (message != "")
             {
                 dealNum mNum = new dealNum();
                 done = mNum.IsNumeric(message);
@@ -231,11 +235,12 @@ namespace _24Dian
                 if (done == true)
                 {
                     num2 = mNum.result;
-                    check2.Text = "✔";
+                    //check2.Text = "✔";
                 }
                 else
-                { check2.Text = "⛔"; num2 = 0; }
+                { num2 = 0; }
             }
+            
         }
 
         //3
@@ -245,9 +250,7 @@ namespace _24Dian
              
             bool done = false;
             String message = textbox3.Text;
-            if (message == "")
-            { check3.Text = "ℹ"; }
-            else
+            if (message != "")
             {
                 dealNum mNum = new dealNum();
                 done = mNum.IsNumeric(message);
@@ -255,10 +258,10 @@ namespace _24Dian
                 if (done == true)
                 {
                     num3 = mNum.result;
-                    check3.Text = "✔";
+                    //check3.Text = "✔";
                 }
                 else
-                { check3.Text = "⛔"; num3 = 0; }
+                { num3 = 0; }
             }
         }
 
@@ -269,9 +272,7 @@ namespace _24Dian
              
             bool done = false;
             String message = textbox4.Text;
-            if (message == "")
-            { check4.Text = "ℹ"; }
-            else
+            if (message != "")
             {
                 dealNum mNum = new dealNum();
                 done = mNum.IsNumeric(message);
@@ -279,16 +280,19 @@ namespace _24Dian
                 if (done == true)
                 {
                     num3 = mNum.result;
-                    check4.Text = "✔";
+                    // check4.Text = "✔";
                 }
                 else
-                { check4.Text = "⛔"; num4 = 0; }
+                { num4 = 0; }
             }
         }
 
         //Begin to calculate
         private void ok(object sender, RoutedEventArgs e)
         {
+            res = 0; temp = 0;//init
+            result.Text = "";//init
+            output.Text = "";//init
             int y = num1 * num2 * num3 * num4;
             if (y != 0)
             {
@@ -300,7 +304,7 @@ namespace _24Dian
                 calculate();
             }
             else
-                output.Text = "输入数值有误，请按照提示重新输入";
+                output.Text = "输入数值有误，\n请重新输入";
         }
 
         private void calculate()
@@ -315,9 +319,12 @@ namespace _24Dian
 								{
 									res=treat(num[i],num[j],num[k],num[t]);
 								}
-	if (res==0)
-		output.Text = "抱歉，无解";
-	//else ;
+            if (res == 0)
+            {
+                output.Text = "抱歉，无解";
+                result.Text = "";
+            }
+            else result.Text = "=24";
         }
 
         int treat(float a, float b, float c, float d)
@@ -333,7 +340,7 @@ namespace _24Dian
                             sum1 = myF(i, a, b);
                             sum2 = myF(j, sum1, c);
                             sum3 = myF(k, sum2, d);
-                            if (Math.Abs(sum3 - 24) < 0.1)
+                            if (Math.Abs(sum3 - 24) < 1e-8)
                             {
                                 temp++;
                                 myPrint(1, i, j, k, a, b, c, d);
@@ -347,7 +354,7 @@ namespace _24Dian
                             sum1 = myF(i, a, b);
                             sum2 = myF(j, c, d);
                             sum3 = sum1 * sum2;
-                            if (Math.Abs(sum3 - 24) < 0.1)
+                            if (Math.Abs(sum3 - 24) < 1e-8)
                             {
                                 temp++;
                                 myPrint(2, i, j, k, a, b, c, d);
@@ -364,7 +371,7 @@ namespace _24Dian
                             if (sum2 != 0)
                             {
                                 sum3 = sum1 / sum2;
-                                if (Math.Abs(sum3 - 24) < 0.1)
+                                if (Math.Abs(sum3 - 24) < 1e-8)
                                 {
                                     temp++;
                                     myPrint(3, i, j, k, a, b, c, d);
@@ -405,55 +412,63 @@ namespace _24Dian
             return 0;
         }
 
-        void myPrint(int type,int i,int j,int k,float aa,float bb,float cc,float dd)
-{
+        void myPrint(int type, int i, int j, int k, float aa, float bb, float cc, float dd)
+        {
             char[] sigle = new char[6];
-		sigle[0]='+';
-		sigle[1]='-';
-		sigle[2]='*';
-		sigle[3]='/';
-		sigle[4]='-';
-		sigle[5]='/';
-            int at = (int) aa; String a=at.ToString();
-            int bt = (int) bb; String b=bt.ToString();
-            int ct = (int) cc; String c=ct.ToString();
-            int dt = (int) dd; String d=dt.ToString(); 
+            sigle[0] = '+';
+            sigle[1] = '-';
+            sigle[2] = '*';
+            sigle[3] = '/';
+            sigle[4] = '-';
+            sigle[5] = '/';
+            int at = (int)aa; String a = at.ToString();
+            int bt = (int)bb; String b = bt.ToString();
+            int ct = (int)cc; String c = ct.ToString();
+            int dt = (int)dd; String d = dt.ToString();
 
-	if (type==1){
-        if (j == 4 || j == 5)
-        {
-            if (k == 4 || k == 5)
-                //还没换行
-                output.Text = d + sigle[k] + "(" + c + sigle[j] + "(" + a + sigle[i] + b + "))=24";
-            //"%2.0f %c (%2.0f %c (%2.0f %c %2.0f)) =24\n",d,sigle[k],c,sigle[j],a,sigle[i],b;
-            else
-                output.Text = "(" + c + sigle[j] + "(" + a + sigle[i] + b + "))" + sigle[k] + d + "=24";
-            //"(%2.0f %c (%2.0f %c %2.0f)) %c %2.0f =24\n", c,sigle[j],a,sigle[i],b,sigle[k],d;
-        }
-        else if (k == 4 || k == 5)
-        {
-            output.Text = d + sigle[k] + "((" + a + sigle[i] + b + ")" + sigle[j] + c + ")=24";
-            //"%2.0f %c ((%2.0f %c %2.0f) %c %2.0f) =24\n",d,sigle[k],a,sigle[i],b,sigle[j],c;
-        }
-        else
-            output.Text = "((" + a + sigle[i] + b + ")" + sigle[j] + c + ")" + sigle[k] + d + "=24";
-			//"((%2.0f %c %2.0f) %c %2.0f) %c %2.0f =24\n",a,sigle[i],b,sigle[j],c,sigle[k],d;
-	}
-	if (type==2 || type==3)
-	{
-	//	if (k==4 || k==5)
-	//		printf("(%2.0f %c %2.0f) %c (%2.0f %c %2.0f)=24\n",c,sigle[j],d,sigle[k],a,sigle[i],b);
-	//	else
-        output.Text = "(" + a + sigle[i] + b + ")" + sigle[k] + "(" + c + sigle[j] + d + ")" + "=24";
-        			//"(%2.0f %c %2.0f) %c (%2.0f %c %2.0f) =24\n",a,sigle[i],b,sigle[k],c,sigle[j],d;
-	}
-}					
+            if (type == 1)
+            {
+                if (j == 4 || j == 5)
+                {
+                    if (k == 4 || k == 5)
+                        //还没换行
+                        output.Text = d + sigle[k] + "(" + c + sigle[j] + "(" + a + sigle[i] + b + "))";
+                    //"%2.0f %c (%2.0f %c (%2.0f %c %2.0f)) =24\n",d,sigle[k],c,sigle[j],a,sigle[i],b;
+                    else
+                        output.Text = "(" + c + sigle[j] + "(" + a + sigle[i] + b + "))" + sigle[k] + d;
+                    //"(%2.0f %c (%2.0f %c %2.0f)) %c %2.0f =24\n", c,sigle[j],a,sigle[i],b,sigle[k],d;
+                }
+                else if (k == 4 || k == 5)
+                {
+                    output.Text = d + sigle[k] + "((" + a + sigle[i] + b + ")" + sigle[j] + c + ")";
+                    //"%2.0f %c ((%2.0f %c %2.0f) %c %2.0f) =24\n",d,sigle[k],a,sigle[i],b,sigle[j],c;
+                }
+                else
+                    output.Text = "((" + a + sigle[i] + b + ")" + sigle[j] + c + ")" + sigle[k] + d ;
+                //"((%2.0f %c %2.0f) %c %2.0f) %c %2.0f =24\n",a,sigle[i],b,sigle[j],c,sigle[k],d;
+            }
+            if (type == 2 || type == 3)
+            {
+                //	if (k==4 || k==5)
+                //		printf("(%2.0f %c %2.0f) %c (%2.0f %c %2.0f)=24\n",c,sigle[j],d,sigle[k],a,sigle[i],b);
+                //	else
+                output.Text = "(" + a + sigle[i] + b + ")" + sigle[k] + "(" + c + sigle[j] + d + ")";
+                //"(%2.0f %c %2.0f) %c (%2.0f %c %2.0f) =24\n",a,sigle[i],b,sigle[k],c,sigle[j],d;
+            }
+        }					
+
 
         //Info Page
         private void HelpButton_Click(object sender, RoutedEventArgs e)
         {
             //this.NavigationService.Navigate(new Uri("/Info_Page.xaml", UriKind.Relative));
-            Frame.Navigate(typeof(PageInfo));
+            Frame.Navigate(typeof(PageInfo),appversion);
+        }
+
+        private async void LikeButton_Click(object sender, RoutedEventArgs e)
+        {
+            await Windows.System.Launcher.LaunchUriAsync(
+    new Uri(string.Format("ms-windows-store:reviewapp?appid=" + "1fa519bd-8db6-41fa-8e9c-90f138fe8c8b")));
         }
 
         //clear all
@@ -464,11 +479,16 @@ namespace _24Dian
             textbox2.Text = "";
             textbox3.Text = "";
             textbox4.Text = "";
-            //num1 = num2 = num3 = num4 = i = j = k = t = 0;
+            result.Text = "";
+            result.Text = "";
+            res = 0; temp = 0;
+            num1 = num2 = num3 = num4 = i = j = k = t = 0;
         }
+
 
         //
         //IF YOU WANT Add something here
         //
     }
 }
+
