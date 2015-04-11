@@ -290,7 +290,9 @@ namespace _24Dian
         //Begin to calculate
         private void ok(object sender, RoutedEventArgs e)
         {
-            output.Text = "";
+            res = 0; temp = 0;//init
+            result.Text = "";//init
+            output.Text = "";//init
             int y = num1 * num2 * num3 * num4;
             if (y != 0)
             {
@@ -317,9 +319,12 @@ namespace _24Dian
 								{
 									res=treat(num[i],num[j],num[k],num[t]);
 								}
-	if (res==0)
-		output.Text = "抱歉，无解";
-	else result.Text="=24" ;
+            if (res == 0)
+            {
+                output.Text = "抱歉，无解";
+                result.Text = "";
+            }
+            else result.Text = "=24";
         }
 
         int treat(float a, float b, float c, float d)
@@ -407,49 +412,51 @@ namespace _24Dian
             return 0;
         }
 
-        void myPrint(int type,int i,int j,int k,float aa,float bb,float cc,float dd)
-{
+        void myPrint(int type, int i, int j, int k, float aa, float bb, float cc, float dd)
+        {
             char[] sigle = new char[6];
-		sigle[0]='+';
-		sigle[1]='-';
-        sigle[2] = '×';
-        sigle[3] = '÷';
-		sigle[4]='-';
-        sigle[5] = '÷';
-            int at = (int) aa; String a=at.ToString();
-            int bt = (int) bb; String b=bt.ToString();
-            int ct = (int) cc; String c=ct.ToString();
-            int dt = (int) dd; String d=dt.ToString(); 
+            sigle[0] = '+';
+            sigle[1] = '-';
+            sigle[2] = '*';
+            sigle[3] = '/';
+            sigle[4] = '-';
+            sigle[5] = '/';
+            int at = (int)aa; String a = at.ToString();
+            int bt = (int)bb; String b = bt.ToString();
+            int ct = (int)cc; String c = ct.ToString();
+            int dt = (int)dd; String d = dt.ToString();
 
-	if (type==1){
-        if (j == 4 || j == 5)
-        {
-            if (k == 4 || k == 5)
-                //还没换行
-                output.Text += d + sigle[k] + "(" + c + sigle[j] + "(" + a + sigle[i] + b + "))\n";
-            //"%2.0f %c (%2.0f %c (%2.0f %c %2.0f)) =24\n",d,sigle[k],c,sigle[j],a,sigle[i],b;
-            else
-                output.Text += "(" + c + sigle[j] + "(" + a + sigle[i] + b + "))" + sigle[k] + d + "\n";
-            //"(%2.0f %c (%2.0f %c %2.0f)) %c %2.0f =24\n", c,sigle[j],a,sigle[i],b,sigle[k],d;
-        }
-        else if (k == 4 || k == 5)
-        {
-            output.Text += d + sigle[k] + "((" + a + sigle[i] + b + ")" + sigle[j] + c + ")\n";
-            //"%2.0f %c ((%2.0f %c %2.0f) %c %2.0f) =24\n",d,sigle[k],a,sigle[i],b,sigle[j],c;
-        }
-        else
-            output.Text += "((" + a + sigle[i] + b + ")" + sigle[j] + c + ")" + sigle[k] + d + "\n";
-			//"((%2.0f %c %2.0f) %c %2.0f) %c %2.0f =24\n",a,sigle[i],b,sigle[j],c,sigle[k],d;
-	}
-	if (type==2 || type==3)
-	{
-	//	if (k==4 || k==5)
-	//		printf("(%2.0f %c %2.0f) %c (%2.0f %c %2.0f)=24\n",c,sigle[j],d,sigle[k],a,sigle[i],b);
-	//	else
-        output.Text += "(" + a + sigle[i] + b + ")" + sigle[k] + "(" + c + sigle[j] + d + ")" + "\n";
-        			//"(%2.0f %c %2.0f) %c (%2.0f %c %2.0f) =24\n",a,sigle[i],b,sigle[k],c,sigle[j],d;
-	}
-}					
+            if (type == 1)
+            {
+                if (j == 4 || j == 5)
+                {
+                    if (k == 4 || k == 5)
+                        //还没换行
+                        output.Text = d + sigle[k] + "(" + c + sigle[j] + "(" + a + sigle[i] + b + "))";
+                    //"%2.0f %c (%2.0f %c (%2.0f %c %2.0f)) =24\n",d,sigle[k],c,sigle[j],a,sigle[i],b;
+                    else
+                        output.Text = "(" + c + sigle[j] + "(" + a + sigle[i] + b + "))" + sigle[k] + d;
+                    //"(%2.0f %c (%2.0f %c %2.0f)) %c %2.0f =24\n", c,sigle[j],a,sigle[i],b,sigle[k],d;
+                }
+                else if (k == 4 || k == 5)
+                {
+                    output.Text = d + sigle[k] + "((" + a + sigle[i] + b + ")" + sigle[j] + c + ")";
+                    //"%2.0f %c ((%2.0f %c %2.0f) %c %2.0f) =24\n",d,sigle[k],a,sigle[i],b,sigle[j],c;
+                }
+                else
+                    output.Text = "((" + a + sigle[i] + b + ")" + sigle[j] + c + ")" + sigle[k] + d ;
+                //"((%2.0f %c %2.0f) %c %2.0f) %c %2.0f =24\n",a,sigle[i],b,sigle[j],c,sigle[k],d;
+            }
+            if (type == 2 || type == 3)
+            {
+                //	if (k==4 || k==5)
+                //		printf("(%2.0f %c %2.0f) %c (%2.0f %c %2.0f)=24\n",c,sigle[j],d,sigle[k],a,sigle[i],b);
+                //	else
+                output.Text = "(" + a + sigle[i] + b + ")" + sigle[k] + "(" + c + sigle[j] + d + ")";
+                //"(%2.0f %c %2.0f) %c (%2.0f %c %2.0f) =24\n",a,sigle[i],b,sigle[k],c,sigle[j],d;
+            }
+        }					
+
 
         //Info Page
         private void HelpButton_Click(object sender, RoutedEventArgs e)
@@ -473,7 +480,9 @@ namespace _24Dian
             textbox3.Text = "";
             textbox4.Text = "";
             result.Text = "";
-            //num1 = num2 = num3 = num4 = i = j = k = t = 0;
+            result.Text = "";
+            res = 0; temp = 0;
+            num1 = num2 = num3 = num4 = i = j = k = t = 0;
         }
 
 

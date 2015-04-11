@@ -17,12 +17,12 @@
             </StackPanel.Background>
             <ScrollViewer Name="scrollviewer" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="220" Margin="0,15,0,0" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Visible">
                 <ScrollViewer.Content>
-                    <TextBlock TextWrapping="Wrap" FontSize="33" Margin="10,0,10,50"
+                    <TextBlock TextWrapping="Wrap" FontSize="33" Margin="10,50,10,50"
                                Text="" Name="output" Foreground="#FF0D1925" FontFamily="visitor1.ttf#Visitor TT1 BRK"/>
                 </ScrollViewer.Content>                
             </ScrollViewer>
         </StackPanel>
-        <TextBlock Margin="88,415,78,0" FontSize="33" HorizontalAlignment="Right" Text="" Name="result" Foreground="#FF0D1925" FontFamily="visitor1.ttf#Visitor TT1 BRK"/>
+        <TextBlock Text="" Margin="88,415,78,0" FontSize="33" HorizontalAlignment="Right" Name="result" Foreground="#FF0D1925" FontFamily="visitor1.ttf#Visitor TT1 BRK"/>
         <!-- Title Panel -->
         <StackPanel Grid.Row="0" Margin="0,1,0,0">
             <TextBlock Text="24Solver" FontSize="48"  CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}" FontFamily="AGENCYR.TTF#Agency FB" TextAlignment="Center" RenderTransformOrigin="0.5,0.5" Foreground="#FFE8E9">
